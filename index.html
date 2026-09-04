@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mémento — L'IA pour le travail étudiant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5f2ec;
+    --ink:#211f1b;
+    --ink-soft:#5b564c;
+    --line:#d9d3c6;
+    --teal:#2f6a5f;
+    --teal-soft:#e4ede9;
+    --clay:#a85a2b;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+  }
+  a{color:var(--teal);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .eyebrow span{color:var(--teal); font-weight:600;}
+  h1{font-size:clamp(32px,5vw,46px); line-height:1.12; max-width:14ch;}
+  .lede{
+    margin-top:16px;
+    max-width:56ch;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  section{padding:40px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px;}
+  .sec-num{
+    font-family:'Fraunces',serif;
+    font-size:14px;
+    color:var(--clay);
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  h2{font-size:23px;}
+
+  p{margin:0 0 12px;}
+  ul{margin:0; padding-left:18px;}
+  li{margin-bottom:8px;}
+
+  .note{
+    font-size:14px;
+    color:var(--ink-soft);
+    border-left:2px solid var(--line);
+    padding-left:12px;
+    margin-top:14px;
+  }
+
+  /* tool grid */
+  .tool-group{margin-bottom:24px;}
+  .tool-group h3{font-size:15px; font-family:'Work Sans',sans-serif; font-weight:600; margin-bottom:4px;}
+  .tool-group .desc{color:var(--ink-soft); font-size:14px; margin-bottom:10px;}
+  .tool-list{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+  .tool-list a{
+    display:inline-block;
+    padding:7px 12px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:3px;
+    font-size:14px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .tool-list a:hover{border-color:var(--teal); color:var(--teal);}
+  .tool-featured{
+    display:flex;
+    gap:14px;
+    background:var(--teal-soft);
+    border-radius:4px;
+    padding:14px 16px;
+    margin-bottom:12px;
+  }
+  .tool-featured .tag{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--teal);
+    font-weight:600;
+  }
+  .tool-featured p{margin:4px 0 6px; font-size:14px; color:var(--ink-soft);}
+  .tool-featured a{font-size:14px; font-weight:500;}
+
+  /* prompt anatomy */
+  .prompt-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:14px;}
+  .prompt-item{border:1px solid var(--line); border-radius:4px; padding:14px;}
+  .prompt-item .n{font-family:'Fraunces',serif; color:var(--clay); font-size:13px; margin-bottom:6px;}
+  .prompt-item h3{font-size:15px; font-family:'Work Sans',sans-serif; font-weight:600; margin-bottom:4px;}
+  .prompt-item p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  /* risk list */
+  .risk-list{list-style:none; padding:0; display:grid; gap:10px;}
+  .risk-list li{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:12px 14px;
+    background:#fff;
+  }
+  .risk-list strong{display:block; font-size:14.5px; margin-bottom:3px;}
+  .risk-list span{font-size:14px; color:var(--ink-soft);}
+
+  footer{padding:32px 0 60px; font-size:13px; color:var(--ink-soft);}
+  footer a{color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Mémento <span>du cours</span></div>
+  <h1>L'IA pour le travail étudiant</h1>
+  <p class="lede">Les repères et les liens vus en cours, à garder sous la main pour vos travaux — définitions, outils à tester, anatomie d'un bon prompt, risques à connaître.</p>
+</header>
+
+<section id="comprendre">
+  <div class="sec-head"><span class="sec-num">§ 01</span><h2>Comprendre</h2></div>
+  <p>Une IA générative n'est pas un système qui « pense » : c'est une automatisation qui produit le texte le plus <em>plausible</em>, pas le plus vrai. Elle ne cite pas ses sources comme un moteur de recherche — elle paraphrase et recompose.</p>
+  <ul>
+    <li><strong>Google cite, ChatGPT paraphrase.</strong> Un moteur de recherche renvoie vers ses sources ; un agent conversationnel les fond dans une réponse reformulée, sans toujours indiquer d'où elle vient.</li>
+    <li>Elle fonctionne par probabilités : un mot changé dans une consigne peut modifier tout le résultat (voir § 05).</li>
+    <li>Elle n'est pas neutre : un tri des contenus est fait en amont, selon des critères qui ne sont pas les vôtres.</li>
+  </ul>
+</section>
+
+<section id="outils">
+  <div class="sec-head"><span class="sec-num">§ 02</span><h2>Outils à tester</h2></div>
+
+  <div class="tool-group">
+    <div class="tool-featured">
+      <div>
+        <div class="tag">À privilégier pour réviser</div>
+        <p>Gemini Notebook (ex-NotebookLM) travaille uniquement à partir des documents que vous lui donnez — idéal pour étudier un texte, un corpus, réviser ou se créer un assistant spécialisé.</p>
+        <a href="https://notebooklm.google.com/" target="_blank" rel="noopener">Ouvrir Gemini Notebook ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-group">
+    <h3>IA générative en ligne</h3>
+    <p class="desc">Accessibles depuis un navigateur, sans installation. Les données transitent par les serveurs du fournisseur, le plus souvent hors UE.</p>
+    <ul class="tool-list">
+      <li><a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT — OpenAI</a></li>
+      <li><a href="https://claude.ai/" target="_blank" rel="noopener">Claude — Anthropic</a></li>
+      <li><a href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini — Google</a></li>
+      <li><a href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Copilot — Microsoft</a></li>
+      <li><a href="https://chat.mistral.ai/chat" target="_blank" rel="noopener">Le Chat — Mistral (FR)</a></li>
+      <li><a href="https://www.ecosia.org/ai-chat" target="_blank" rel="noopener">Ecosia IA</a></li>
+      <li><a href="https://huggingface.co/chat/" target="_blank" rel="noopener">HuggingChat — Hugging Face</a></li>
+    </ul>
+  </div>
+
+  <div class="tool-group">
+    <h3>IA en local, sur son ordinateur</h3>
+    <p class="desc">Gratuites, open source, les données ne quittent pas la machine. Nécessitent une installation.</p>
+    <ul class="tool-list">
+      <li><a href="https://jan.ai/" target="_blank" rel="noopener">Jan — le plus simple à installer</a></li>
+      <li><a href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a></li>
+      <li><a href="https://lmstudio.ai/" target="_blank" rel="noopener">LM Studio</a></li>
+      <li><a href="https://anythingllm.com/" target="_blank" rel="noopener">AnythingLLM</a></li>
+      <li><a href="https://www.open-notebook.ai/" target="_blank" rel="noopener">Open Notebook — équivalent local à Gemini Notebook</a></li>
+    </ul>
+    <p class="desc" style="margin-top:8px;">Liste vérifiée en septembre 2026 : les quatre premiers sont les références les plus citées pour le grand public ; Open Notebook demande une installation plus technique (Docker) mais reproduit le fonctionnement de Gemini Notebook sans envoyer les documents à Google.</p>
+  </div>
+</section>
+
+<section id="prompt">
+  <div class="sec-head"><span class="sec-num">§ 03</span><h2>Anatomie d'un bon prompt</h2></div>
+  <p>« Raccourcis ça » ou « rends-le plus pro » sont des souhaits, pas des instructions. Sans les cinq éléments ci-dessous, l'IA comble les vides avec ses réglages par défaut — génériques à chaque fois. Dans l'idéal, il faut préciser ces cinq aspects de votre demande :</p>
+  <div class="prompt-grid">
+    <div class="prompt-item"><div class="n">01</div><h3>Rôle</h3><p>Qui l'IA est censée incarner.</p></div>
+    <div class="prompt-item"><div class="n">02</div><h3>Tâche</h3><p>Ce que vous voulez obtenir, précisément.</p></div>
+    <div class="prompt-item"><div class="n">03</div><h3>Contexte</h3><p>Situation, destinataire, pourquoi ce document.</p></div>
+    <div class="prompt-item"><div class="n">04</div><h3>Format</h3><p>Longueur, structure attendue.</p></div>
+    <div class="prompt-item"><div class="n">05</div><h3>Contraintes</h3><p>Ce que vous ne voulez surtout pas.</p></div>
+  </div>
+</section>
+
+<section id="usages">
+  <div class="sec-head"><span class="sec-num">§ 04</span><h2>L'IA pour l'étudiant</h2></div>
+
+  <p><strong>Réviser et apprendre.</strong> Déposer un texte, un cours ou un corpus de plusieurs documents dans Gemini Notebook plutôt que dans un chat généraliste : l'outil reste ancré aux sources fournies, il n'invente pas à partir d'autre chose.</p>
+  <ul>
+    <li>Se faire résumer un texte long ou expliquer une notion (ex. résilience, réification, classe sociale) à partir des documents de cours déposés.</li>
+    <li>Générer un support de révision audio façon podcast à partir d'un corpus, pour réviser en dehors de l'écran.</li>
+    <li>Se créer un assistant spécialisé sur une matière ou une méthode, à solliciter tout au long du semestre.</li>
+  </ul>
+
+  <p><strong>Réduire le travail fastidieux.</strong> Repérer ce qui, dans un travail, est répétitif — et le confier à l'IA comme on le confierait à un·e stagiaire : un cadre précis (§ 03), puis une vérification systématique.</p>
+  <ul>
+    <li>Reformuler des notes de cours prises au vol en un texte structuré et lisible.</li>
+    <li>Produire un premier jet de plan ou de bibliographie à partir d'une liste de sources, à vérifier et corriger ensuite.</li>
+    <li>Traduire ou reformuler un passage technique pour en vérifier la compréhension.</li>
+  </ul>
+
+  <p><strong>Pratiquer.</strong> Tester régulièrement sur de petites tâches plutôt qu'apprendre la théorie seule — comme pour tout nouvel outil.</p>
+  <ul>
+    <li>Comparer une même consigne sur deux outils différents (ex. ChatGPT et Le Chat) pour repérer leurs écarts de réponse.</li>
+    <li>Regarder comment d'autres étudiant·es ou professionnel·les utilisent ces outils, pour se construire ses propres usages.</li>
+  </ul>
+</section>
+
+<section id="risques">
+  <div class="sec-head"><span class="sec-num">§ 05</span><h2>Risques à connaître</h2></div>
+  <ul class="risk-list">
+    <li><strong>Hallucinations</strong><span>Le modèle produit du texte plausible, pas nécessairement vrai. Toujours vérifier après coup.</span></li>
+    <li><strong>Effet papillon</strong><span>Un mot changé dans le prompt peut donner un résultat complètement différent : il n'y a pas de réponse stable à une question.</span></li>
+    <li><strong>Censure et pré-tri</strong><span>Les contenus sont filtrés en amont selon des critères qui ne sont pas les vôtres.</span></li>
+    <li><strong>Désapprentissage</strong><span>À force de laisser faire la machine, une compétence pratiquée moins souvent se dégrade.</span></li>
+    <li><strong>Pas de métacognition</strong><span>Interrogée sur son propre fonctionnement, l'IA invente une explication plausible — ce n'est pas un compte rendu fiable.</span></li>
+    <li><strong>Données</strong><span>Un usage en ligne envoie vos données hors UE, donc hors du cadre de protection européen.</span></li>
+  </ul>
+</section>
+
+<section id="veille">
+  <div class="sec-head"><span class="sec-num">§ 07</span><h2>Se tenir au courant et pratiquer</h2></div>
+  <p>Le paysage évolue vite : noms, offres et modèles changent en quelques mois. Une veille légère suffit — pas besoin de tout suivre en continu. Et le meilleur apprentissage reste la pratique, sur de petites tâches concrètes.</p>
+  <ul class="tool-list">
+    <li><a href="https://breviatapp-production.up.railway.app/" target="_blank" rel="noopener">Breviat — veille IA quotidienne</a></li>
+    <li><a href="https://annecava.github.io/ateliermemoireia26/" target="_blank" rel="noopener">Atelier IA & mémoire — exercices</a></li>
+  </ul>
+  <p class="note">Breviat lit chaque jour un ensemble de sources de référence sur l'IA, élimine les doublons et hiérarchise l'essentiel dans une synthèse envoyée par email, filtrée selon les centres d'intérêt choisis.</p>
+  <p class="note">L'atelier IA & mémoire est un site conçu pour un cours de méthodologie du mémoire à l'IRTS : ses exercices pas à pas permettent de tester et d'imaginer des usages sur un travail de recherche.</p>
+</section>
+
+</div>
+
+
+</body>
+</html>
